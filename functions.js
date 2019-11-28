@@ -48,7 +48,7 @@ function project_name_checkRut(rut) {
     rut.value = cuerpo + '-'+ dv
     
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+    if(cuerpo.length < 7) { return false;}
     
     // Calcular Dígito Verificador
     suma = 0;
@@ -76,7 +76,7 @@ function project_name_checkRut(rut) {
     dv = (dv == 0)?11:dv;
     
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+    if(dvEsperado != dv) { return false; }
     
     // Si todo sale bien, eliminar errores (decretar que es válido)
     rut.setCustomValidity('');
@@ -89,4 +89,4 @@ function project_name_validarEmail( email )
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email) ? true : false;
-}z
+}
