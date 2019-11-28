@@ -34,9 +34,10 @@ function project_name_setDisplay( element , set_display) {
 /*
 Check RUT
 */
-function project_name_checkRut(rut) {
+function project_name_checkRut(element_id) {
+    var element = document.getElementById(element_id);
     // Despejar Puntos
-    var valor = rut.value.replace('.','');
+    var valor = element.value.split('.').join('');
     // Despejar Guión
     valor = valor.replace('-','');
     
@@ -45,7 +46,7 @@ function project_name_checkRut(rut) {
     dv = valor.slice(-1).toUpperCase();
     
     // Formatear RUN
-    rut.value = cuerpo + '-'+ dv
+    element.value = cuerpo + '-'+ dv
     
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
     if(cuerpo.length < 7) { return false;}
@@ -79,7 +80,7 @@ function project_name_checkRut(rut) {
     if(dvEsperado != dv) { return false; }
     
     // Si todo sale bien, eliminar errores (decretar que es válido)
-    rut.setCustomValidity('');
+    return true;
 }
 
 /*
